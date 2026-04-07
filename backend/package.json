@@ -7,11 +7,13 @@
   },
   "private": true,
   "dependencies": {
-    "@prisma/client": "^7.6.0",
+    "@prisma/client": "^5.22.0",
+    "@prisma/adapter-pg": "^5.22.0",
+    "pg": "^8.13.3",
     "elysia": "latest"
   },
   "devDependencies": {
-    "prisma": "^7.6.0",
+    "prisma": "^5.22.0",
     "@types/bun": "latest",
     "typescript": "^5"
   }
