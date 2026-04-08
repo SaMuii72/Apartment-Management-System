@@ -20,24 +20,25 @@ model User {
 }
 
 model Room {
-  id     Int        @id @default(autoincrement())
-  number String     @unique
-  floor  Int
-  status RoomStatus @default(AVAILABLE)
-  price  Float
-  tenant Tenant?
+  id           String     @id @default(cuid())
+  number       String     @unique
+  floor        Int
+  status       RoomStatus @default(available)
+  pricePerMonth Float
+  tenant       Tenant?
 }
 
+
 model Tenant {
-  id       Int    @id @default(autoincrement())
+  id       String @id @default(cuid())
   name     String
   phone    String
-  roomId   Int    @unique
+  roomId   String @unique
   room     Room   @relation(fields: [roomId], references: [id])
 }
 
 enum RoomStatus {
-  AVAILABLE
-  OCCUPIED
-  MAINTENANCE
+  available
+  occupied
+  maintenance
 }

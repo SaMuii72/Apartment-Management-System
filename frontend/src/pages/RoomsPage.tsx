@@ -1,16 +1,22 @@
 
 
-import { useState } from "react"
-import { rooms } from "../lib/mock-data"
+import { useState, useEffect } from "react"
 import { RoomCard } from "../components/room-card"
-import type { RoomStatus } from "../lib/types"
+import type { Room, RoomStatus } from "../lib/types"
 import { cn } from "../lib/utils"
 import { Building2, CheckCircle, DoorOpen, Wrench } from "lucide-react"
 
 type FilterStatus = RoomStatus | 'all'
 
 export default function RoomDirectory() {
+  const [rooms, setRooms] = useState<Room[]>([])
   const [filter, setFilter] = useState<FilterStatus>('all')
+
+  useEffect(() => {
+    fetch("http://localhost:3000/rooms")
+      .then(r => r.json())
+      .then(setRooms)
+  }, [])
 
   const stats = {
     total: rooms.length,

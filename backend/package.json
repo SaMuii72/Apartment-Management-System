@@ -9,6 +9,7 @@
   "dependencies": {
     "@prisma/client": "^5.22.0",
     "@prisma/adapter-pg": "^5.22.0",
+    "@elysiajs/cors": "latest",
     "pg": "^8.13.3",
     "elysia": "latest"
   },
